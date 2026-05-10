@@ -84,7 +84,7 @@ img{
 
 <!-- 🔐 -->
 <div id="lock">
-  <h2>🔐 Şifreyi gir(şifre telefon şifrem)</h2>
+  <h2>🔐 Şifreyi gir</h2>
   <input id="pass" type="password" placeholder="şifre">
   <button onclick="check()">Giriş</button>
   <p id="err"></p>
@@ -92,29 +92,16 @@ img{
 
 <!-- 💜 -->
 <div id="site">
-  <div id="site">
-
   <h1>💜 Anneler Günü 💜</h1>
 
-  <div class="container">
-
-    <!-- 📸 FOTO -->
-    <div class="card">
-      <img src="https://i.hizliresim.com/n0ijnu6.jpeg">
-    </div>
-
-    <!-- ✍️ YAZI -->
-    <div class="card">
-      <p id="text"></p>
-    </div>
-
+  <div class="card">
+    <img src="https://i.hizliresim.com/n0ijnu6.jpeg">
+    <p id="text"></p>
   </div>
 
   <audio id="music" loop>
-    <source src="https://www.image2url.com/r2/default/audio/1778369431868-5d830723-2818-4656-aafe-1792a249db4d.mp3">
+    <source src="MUSIC_URL_BURAYA.mp3">
   </audio>
-
-</div>
 </div>
 
 <script>
@@ -129,7 +116,7 @@ mutlu anımda paylaştığım insansın.
 varlığın bana hep güç veriyor,
 iyi ki hayatımdasın.
 
-💜 anneler günün kutlu olsun balımmm 💜`;
+💜 anneler günün kutlu olsun 💜`;
 
 let i=0;
 
@@ -145,7 +132,7 @@ function type(){
 function check(){
   let p=document.getElementById("pass").value;
 
-  if(p==="427423"){
+  if(p==="1234"){
     document.getElementById("lock").style.display="none";
     document.getElementById("site").style.display="block";
     document.getElementById("music").play();
@@ -170,4 +157,3 @@ setInterval(()=>{
 
 </body>
 </html>
-
