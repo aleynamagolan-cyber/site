@@ -15,7 +15,7 @@ body {
   overflow-x: hidden;
 }
 
-/* 🎬 Netflix intro */
+/* 🎬 intro */
 #introAnim {
   position: fixed;
   width: 100%;
@@ -37,7 +37,7 @@ body {
   100% {opacity: 0; transform: scale(1.5);}
 }
 
-/* 🔐 şifre ekranı */
+/* 🔐 şifre */
 #lockScreen {
   position: fixed;
   width: 100%;
@@ -54,6 +54,7 @@ body {
   padding: 10px;
   border: none;
   border-radius: 10px;
+  margin-top: 10px;
 }
 
 #lockScreen button {
@@ -62,9 +63,10 @@ body {
   border: none;
   border-radius: 10px;
   background: white;
+  cursor: pointer;
 }
 
-/* 💜 içerik */
+/* 💜 site */
 #site {
   display: none;
   padding: 20px;
@@ -117,8 +119,8 @@ img {
 
 <!-- 🔐 şifre -->
 <div id="lockScreen">
-  <h2>🔐 Şifreyi gir( Şifre telefon şifrem )</h2>
-  <input type="password" id="password">
+  <h2>🔐 Şifreyi gir(şifre telefon şifrem)</h2>
+  <input type="password" id="password" placeholder="Şifre">
   <button onclick="checkPassword()">Giriş</button>
   <p id="error"></p>
 </div>
@@ -170,14 +172,12 @@ function checkPassword() {
   const pass = document.getElementById("password").value;
 
   if (pass === "427423") {
-
     document.getElementById("lockScreen").style.display = "none";
     document.getElementById("site").style.display = "block";
 
     document.getElementById("music").play();
 
     typeWriter();
-
   } else {
     document.getElementById("error").innerText = "Yanlış şifre ❌";
   }
@@ -193,6 +193,12 @@ setInterval(() => {
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 2000);
 }, 300);
+
+/* 🎬 intro kapat */
+setTimeout(() => {
+  const intro = document.getElementById("introAnim");
+  if (intro) intro.style.display = "none";
+}, 2000);
 
 </script>
 
