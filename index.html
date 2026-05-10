@@ -9,8 +9,10 @@
 body {
   margin: 0;
   font-family: Arial;
-  background: black;
-  overflow: hidden;
+  background: linear-gradient(135deg, #f3e8ff, #fff5ff);
+  text-align: center;
+  color: #4b2a5a;
+  overflow-x: hidden;
 }
 
 /* 🎬 Netflix intro */
@@ -23,11 +25,10 @@ body {
   justify-content: center;
   align-items: center;
   color: #a855f7;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
-  opacity: 0;
+  z-index: 9999;
   animation: intro 2s ease forwards;
-  z-index: 10000;
 }
 
 @keyframes intro {
@@ -46,13 +47,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 9998;
 }
 
 #lockScreen input {
   padding: 10px;
-  border-radius: 10px;
   border: none;
+  border-radius: 10px;
 }
 
 #lockScreen button {
@@ -61,16 +62,12 @@ body {
   border: none;
   border-radius: 10px;
   background: white;
-  cursor: pointer;
 }
 
-/* 💜 site */
+/* 💜 içerik */
 #site {
   display: none;
-  text-align: center;
-  background: linear-gradient(135deg, #f3e8ff, #fff5ff);
-  height: 100vh;
-  padding-top: 20px;
+  padding: 20px;
 }
 
 h1 {
@@ -91,6 +88,7 @@ h1 {
   margin: auto;
   padding: 20px;
   border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 img {
@@ -98,7 +96,7 @@ img {
   border-radius: 15px;
 }
 
-/* 💜 kalp */
+/* 💜 kalpler */
 .heart {
   position: fixed;
   font-size: 20px;
@@ -114,62 +112,72 @@ img {
 
 <body>
 
-<!-- 🎬 NETFLIX İNTRO -->
+<!-- 🎬 intro -->
 <div id="introAnim">SISTERFLIX</div>
 
-<!-- 🔐 ŞİFRE -->
+<!-- 🔐 şifre -->
 <div id="lockScreen">
-  <h2>🔐 Şifreyi gir(Şifre telefon şifrem)</h2>
+  <h2>🔐 Şifreyi gir( Şifre telefon şifrem )</h2>
   <input type="password" id="password">
   <button onclick="checkPassword()">Giriş</button>
   <p id="error"></p>
 </div>
 
-<!-- 💜 SİTE -->
+<!-- 💜 site -->
 <div id="site">
+
   <h1>💜 Anneler Günün Kutlu Olsun 💜</h1>
 
   <div class="card">
-    <div class="card">
-  <img src="https://i.hizliresim.com/n0ijnu6.jpeg">
-
-  <p>
-  hayat bazen bize kan bağı olmadan en güzel bağları kurduruyor...<br><br>
-
-  sen benim için sadece bir abla değil,<br>
-  zor anımda sığındığım,<br>
-  mutlu anımda ilk paylaşmak istediğim insansın.<br><br>
-
-  varlığın bana hep güç veriyor,<br>
-  iyi ki hayatımdasın.<br><br>
-
-  senin yerin bende çok başka, çok özel...<br><br>
-
-  💜 anneler günün kutlu olsun balımmm 💜
-  </p>
-</div>
+    <img src="https://i.hizliresim.com/n0ijnu6.jpeg">
+    <p id="text"></p>
   </div>
 
   <audio id="music" loop>
     <source src="https://www.image2url.com/r2/default/audio/1778369431868-5d830723-2818-4656-aafe-1792a249db4d.mp3">
   </audio>
+
 </div>
 
 <script>
 
-/* 🎬 intro sonra kapanır */
-setTimeout(() => {
-  document.getElementById("introAnim").style.display = "none";
-}, 2000);
+/* ✍️ yazı */
+const text = `hayat bazen bize kan bağı olmadan en güzel bağları kurduruyor...
+
+sen benim için sadece bir abla değil,
+zor anımda sığındığım,
+mutlu anımda ilk paylaşmak istediğim insansın.
+
+varlığın bana hep güç veriyor,
+iyi ki hayatımdasın.
+
+senin yerin bende çok başka, çok özel...
+
+💜 anneler günün kutlu olsun balımmm 💜`;
+
+let i = 0;
+
+function typeWriter() {
+  if (i < text.length) {
+    document.getElementById("text").innerHTML += text[i];
+    i++;
+    setTimeout(typeWriter, 40);
+  }
+}
 
 /* 🔐 şifre */
 function checkPassword() {
   const pass = document.getElementById("password").value;
 
   if (pass === "427423") {
+
     document.getElementById("lockScreen").style.display = "none";
     document.getElementById("site").style.display = "block";
+
     document.getElementById("music").play();
+
+    typeWriter();
+
   } else {
     document.getElementById("error").innerText = "Yanlış şifre ❌";
   }
