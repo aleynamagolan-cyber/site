@@ -6,108 +6,108 @@
 <title>Anneler Günü 💜</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: linear-gradient(135deg, #f3e8ff, #fff5ff);
-  text-align: center;
-  color: #4b2a5a;
-  overflow-x: hidden;
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(135deg,#f3e8ff,#fff5ff);
+  text-align:center;
+  color:#4b2a5a;
+  overflow-x:hidden;
 }
 
 /* 🎬 intro */
-#introAnim {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #a855f7;
-  font-size: 40px;
-  font-weight: bold;
-  z-index: 9999;
-  animation: intro 2s ease forwards;
+#introAnim{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#a855f7;
+  font-size:40px;
+  font-weight:bold;
+  z-index:9999;
+  animation:intro 2s ease forwards;
 }
 
-@keyframes intro {
-  0% {opacity: 0; transform: scale(0.5);}
-  50% {opacity: 1; transform: scale(1.2);}
-  100% {opacity: 0; transform: scale(1.5);}
+@keyframes intro{
+  0%{opacity:0;transform:scale(.5);}
+  50%{opacity:1;transform:scale(1.2);}
+  100%{opacity:0;transform:scale(1.5);}
 }
 
-/* 🔐 şifre */
-#lockScreen {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #a855f7, #f3e8ff);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9998;
+/* 🔐 şifre ekranı */
+#lockScreen{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,#a855f7,#f3e8ff);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
 }
 
-#lockScreen input {
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  margin-top: 10px;
+#lockScreen input{
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  margin-top:10px;
 }
 
-#lockScreen button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  background: white;
-  cursor: pointer;
+#lockScreen button{
+  margin-top:10px;
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  background:white;
+  cursor:pointer;
 }
 
 /* 💜 site */
-#site {
-  display: none;
-  padding: 20px;
+#site{
+  display:none;
+  padding:20px;
 }
 
-h1 {
-  color: #a855f7;
-  animation: glow 2s infinite alternate;
-  text-shadow: 0 0 10px #c084fc;
+h1{
+  color:#a855f7;
+  animation:glow 2s infinite alternate;
+  text-shadow:0 0 10px #c084fc;
 }
 
-@keyframes glow {
-  from {text-shadow: 0 0 5px #c084fc;}
-  to {text-shadow: 0 0 25px #a855f7;}
+@keyframes glow{
+  from{ text-shadow:0 0 5px #c084fc; }
+  to{ text-shadow:0 0 25px #a855f7; }
 }
 
-.card {
-  background: white;
-  width: 90%;
-  max-width: 500px;
-  margin: auto;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+.card{
+  background:white;
+  width:90%;
+  max-width:500px;
+  margin:auto;
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
 }
 
-img {
-  width: 100%;
-  border-radius: 15px;
+img{
+  width:100%;
+  border-radius:15px;
 }
 
-/* 💜 kalpler */
-.heart {
-  position: fixed;
-  font-size: 20px;
-  animation: float 2s linear forwards;
+/* 💜 kalp */
+.heart{
+  position:fixed;
+  font-size:20px;
+  animation:float 2s linear forwards;
 }
 
-@keyframes float {
-  0% {transform: translateY(0); opacity: 1;}
-  100% {transform: translateY(-200px); opacity: 0;}
+@keyframes float{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-200px);opacity:0;}
 }
 </style>
 </head>
@@ -159,48 +159,50 @@ senin yerin bende çok başka, çok özel...
 
 let i = 0;
 
-function typeWriter() {
-  if (i < text.length) {
+function typeWriter(){
+  if(i < text.length){
     document.getElementById("text").innerHTML += text[i];
     i++;
-    setTimeout(typeWriter, 40);
+    setTimeout(typeWriter,40);
   }
 }
 
 /* 🔐 şifre */
-function checkPassword() {
+function checkPassword(){
   const pass = document.getElementById("password").value;
 
-  if (pass === "427423") {
-    document.getElementById("lockScreen").style.display = "none";
-    document.getElementById("site").style.display = "block";
+  if(pass === "427423"){
+    document.getElementById("lockScreen").style.display="none";
+    document.getElementById("site").style.display="block";
 
     document.getElementById("music").play();
 
     typeWriter();
-  } else {
-    document.getElementById("error").innerText = "Yanlış şifre ❌";
+  }
+  else{
+    document.getElementById("error").innerText="Yanlış şifre ❌";
   }
 }
 
 /* 💜 kalpler */
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "💜";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.top = "100vh";
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="💜";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.top="100vh";
   document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 2000);
-}, 300);
+  setTimeout(()=>heart.remove(),2000);
+},300);
 
 /* 🎬 intro kapat */
-setTimeout(() => {
-  const intro = document.getElementById("introAnim");
-  if (intro) intro.style.display = "none";
-}, 2000);
+setTimeout(()=>{
+  const intro=document.getElementById("introAnim");
+  if(intro) intro.remove();
+},2000);
 
 </script>
 
 </body>
+</html>
 </html>
